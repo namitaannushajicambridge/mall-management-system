@@ -5,6 +5,9 @@ import StoreManagement from './pages/StoreManagement';
 import Events from './pages/Events';
 import ExploreStores from './pages/Explore'; 
 
+// 4. ADD OFFERS IMPORT
+import Offers from './pages/Offers';
+
 function App() {
   return (
     <Router>
@@ -19,6 +22,8 @@ function App() {
             
             <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-400">
               <Link to="/" className="hover:text-blue-600 transition">Home</Link>
+              <Link to="/explore" className="hover:text-blue-600 transition">Directory</Link>
+              <Link to="/offers" className="hover:text-blue-600 transition">Offers</Link>
               <Link to="/events" className="hover:text-blue-600 transition">Events</Link>
             </div>
           </div>
@@ -39,6 +44,7 @@ function App() {
             <Route path="/management" element={<StoreManagement />} />
             <Route path="/explore" element={<ExploreStores />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/offers" element={<Offers />} />
           </Routes>
         </main>
 

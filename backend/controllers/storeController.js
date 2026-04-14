@@ -9,7 +9,21 @@ if (typeof Store.find !== 'function') {
 // 2. Get All Stores
 exports.getAllStores = async (req, res) => {
   try {
-    const stores = await Store.find().sort({ createdAt: -1 }); // Newest first
+    const { search, category } = req.query;
+    let query = {};
+
+    if (search) {
+      query.$or = [
+        { storeName: { $regex: search, $options: 'i' } },
+        { shopNumber: { $regex: search, $options: 'i' } }
+      ];
+    }
+
+    if (category && category !== 'All') {
+      query.category = category;
+    }
+
+    const stores = await Store.find(query).sort({ createdAt: -1 }); // Newest first
     res.status(200).json(stores);
   } catch (err) {
     res.status(500).json({ message: err.message });

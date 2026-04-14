@@ -15,7 +15,9 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // 3. ROUTES MUST COME AFTER THE LIMITS
 const storeRoutes = require('./routes/storeRoutes');
+const offerRoutes = require('./routes/offerRoutes');
 app.use('/api/stores', storeRoutes);
+app.use('/api/offers', offerRoutes);
 
 
 // MongoDB Connection
